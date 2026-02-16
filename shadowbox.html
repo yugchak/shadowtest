@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=".\shadow.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>阴影示例</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 20px;
+            background-color: #f5f7fa;
+            margin: 0;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%; /* Make card square */
+            aspect-ratio: 1 / 1; /* Ensure the element is a square */
+            background-color: white;
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+        }
+
+        .title {
+            margin: auto;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card.special-border {
+            border: 2px solid #3498db;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            z-index: 10;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip strong,
+        .copy-btn {
+            user-select: none;
+        }
+
+        .tooltip-code {
+            background-color: #34495e;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: monospace;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            max-height: 60%;
+            overflow-y: auto;
+            width: 90%;
+        }
+
+        .copy-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .copy-btn.copied {
+            background-color: #2ecc71;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>阴影示例</h1>
+<div class="cards-container" id="cardsContainer">
+</div>
+
+<script>
+    const container = document.getElementById('cardsContainer');
+
+    // --- 配置卡片数据 ---
+    // 每个对象定义一张卡片的属性
+    const cardsConfig = [
+        // special: true添加特殊边框
+        { id: 'bshadow1', title: 'No.1 阴影', text: 'box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;', special: false },
+        { id: 'bshadow2', title: 'No.2 阴影', text: 'box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', special: false },
+        { id: 'bshadow3', title: 'No.3 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;', special: false },
+        { id: 'bshadow4', title: 'No.4 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;', special: false },
+        { id: 'bshadow5', title: 'No.5 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;', special: false },
+        { id: 'bshadow6', title: 'No.6 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;', special: false },
+        { id: 'bshadow7', title: 'No.7 阴影', text: 'box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;', special: false },
+        { id: 'bshadow8', title: 'No.8 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;', special: false },
+        { id: 'bshadow9', title: 'No.9 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;', special: false },
+        { id: 'bshadow10', title: 'No.10 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;', special: false },
+        { id: 'bshadow11', title: 'No.11 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;', special: false },
+        { id: 'bshadow12', title: 'No.12 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;', special: false },
+        { id: 'bshadow13', title: 'No.13 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;', special: false },
+        { id: 'bshadow14', title: 'No.14 阴影', text: 'box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;', special: false },
+        { id: 'bshadow15', title: 'No.15 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;', special: false },
+        { id: 'bshadow16', title: 'No.16 阴影', text: 'box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;', special: false },
+        { id: 'bshadow17', title: 'No.17 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;', special: false },
+        { id: 'bshadow18', title: 'No.18 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;', special: false },
+        { id: 'bshadow19', title: 'No.19 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;', special: false },
+        { id: 'bshadow20', title: 'No.20 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;', special: false },
+        { id: 'bshadow21', title: 'No.21 阴影', text: 'box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;', special: false },
+        { id: 'bshadow22', title: 'No.22 阴影', text: 'box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;', special: false },
+        { id: 'bshadow23', title: 'No.23 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;', special: false },
+        { id: 'bshadow24', title: 'No.24 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;', special: false },
+        { id: 'bshadow25', title: 'No.25 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;', special: false },
+        { id: 'bshadow26', title: 'No.26 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;', special: false },
+        { id: 'bshadow27', title: 'No.27 阴影', text: 'box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;', special: false },
+        { id: 'bshadow28', title: 'No.28 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;', special: false },
+        { id: 'bshadow29', title: 'No.29 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;', special: false },
+        { id: 'bshadow30', title: 'No.30 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;', special: false },
+        { id: 'bshadow31', title: 'No.31 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;', special: false },
+        { id: 'bshadow32', title: 'No.32 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;', special: false },
+        { id: 'bshadow33', title: 'No.33 阴影', text: 'box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;', special: false },
+        { id: 'bshadow34', title: 'No.34 阴影', text: 'box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;', special: false },
+        { id: 'bshadow35', title: 'No.35 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;', special: false },
+        { id: 'bshadow36', title: 'No.36 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;', special: false },
+        { id: 'bshadow37', title: 'No.37 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;', special: false },
+        { id: 'bshadow38', title: 'No.38 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;', special: false },
+        { id: 'bshadow39', title: 'No.39 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;', special: false },
+        { id: 'bshadow40', title: 'No.40 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;', special: false },
+        { id: 'bshadow41', title: 'No.41 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;', special: false },
+        { id: 'bshadow42', title: 'No.42 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;', special: false },
+        { id: 'bshadow43', title: 'No.43 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;', special: false },
+        { id: 'bshadow44', title: 'No.44 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;', special: false },
+        { id: 'bshadow45', title: 'No.45 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;', special: false },
+        { id: 'bshadow46', title: 'No.46 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;', special: false },
+        { id: 'bshadow47', title: 'No.47 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;', special: false },
+        { id: 'bshadow48', title: 'No.48 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;', special: false },
+        { id: 'bshadow49', title: 'No.49 阴影', text: 'box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;', special: false },
+        { id: 'bshadow50', title: 'No.50 阴影', text: 'box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;', special: false },
+        { id: 'bshadow51', title: 'No.51 阴影', text: 'box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;', special: false },
+        { id: 'bshadow52', title: 'No.52 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;', special: false },
+        { id: 'bshadow53', title: 'No.53 阴影', text: 'box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;', special: false },
+        { id: 'bshadow54', title: 'No.54 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;', special: false },
+        { id: 'bshadow55', title: 'No.55 阴影', text: 'box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;', special: false },
+        { id: 'bshadow56', title: 'No.56 阴影', text: 'box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;', special: false },
+        { id: 'bshadow57', title: 'No.57 阴影', text: 'box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;', special: false },
+        { id: 'bshadow58', title: 'No.58 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;', special: false },
+        { id: 'bshadow59', title: 'No.59 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;', special: false },
+        { id: 'bshadow60', title: 'No.60 阴影', text: 'box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;', special: false },
+        { id: 'bshadow61', title: 'No.61 阴影', text: 'box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px; border-radius: 0px;', special: false },
+        { id: 'bshadow62', title: 'No.62 阴影', text: 'box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px; border-radius: 0px;', special: false },
+        { id: 'bshadow63', title: 'No.63 阴影', text: 'box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;', special: false },
+        { id: 'bshadow64', title: 'No.64 阴影', text: 'box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;', special: false },
+        { id: 'bshadow65', title: 'No.65 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;', special: false },
+        { id: 'bshadow66', title: 'No.66 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;', special: false },
+        { id: 'bshadow67', title: 'No.67 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;', special: false },
+        { id: 'bshadow68', title: 'No.68 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;', special: false },
+        { id: 'bshadow69', title: 'No.69 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;', special: false },
+        { id: 'bshadow70', title: 'No.70 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;', special: false },
+        { id: 'bshadow71', title: 'No.71 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;', special: false },
+        { id: 'bshadow72', title: 'No.72 阴影', text: 'box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;', special: false },
+        { id: 'bshadow73', title: 'No.73 阴影', text: 'box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;', special: false },
+        { id: 'bshadow74', title: 'No.74 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;', special: false },
+        { id: 'bshadow75', title: 'No.75 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;', special: false },
+        { id: 'bshadow76', title: 'No.76 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;', special: false },
+        { id: 'bshadow77', title: 'No.77 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;', special: false },
+        { id: 'bshadow78', title: 'No.78 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;', special: false },
+        { id: 'bshadow79', title: 'No.79 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;', special: false },
+        { id: 'bshadow80', title: 'No.80 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;', special: false },
+        { id: 'bshadow81', title: 'No.81 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;', special: false },
+        { id: 'bshadow82', title: 'No.82 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;', special: false },
+        { id: 'bshadow83', title: 'No.83 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;', special: false },
+        { id: 'bshadow84', title: 'No.84 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;', special: false },
+        { id: 'bshadow85', title: 'No.85 阴影', text: 'box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;', special: false },
+        { id: 'bshadow86', title: 'No.86 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;', special: false },
+        { id: 'bshadow87', title: 'No.87 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;', special: false },
+        { id: 'bshadow88', title: 'No.88 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; border-radius: 35px;', special: false },
+        { id: 'bshadow89', title: 'No.89 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;', special: false },
+        { id: 'bshadow90', title: 'No.90 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;', special: false },
+        { id: 'bshadow91', title: 'No.91 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;', special: false },
+        { id: 'bshadow92', title: 'No.92 阴影', text: 'box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;', special: false },
+        { id: 'bshadow93', title: 'No.93 阴影', text: 'box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;', special: false },
+        { id: 'bshadow94', title: 'No.94 阴影', text: 'box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;', special: false }
+        // 可以继续添加更多卡片配置...
+    ];
+
+    // --- 批量生成卡片 ---
+    cardsConfig.forEach(config => {
+        // 生成card div
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card';
+        cardDiv.id = config.id;
+
+        // 创建特殊边框
+        if (config.special) {
+            cardDiv.classList.add('special-border');
+        }
+
+        // 创建标题
+        cardDiv.innerHTML += `
+            <div class="title">${config.title}</div>
+        `;
+
+
+        // 创建关闭按钮（保留此元素，以防未来需要）
+        const closeBtn = document.createElement('span');
+        closeBtn.className = 'close-btn';
+        closeBtn.textContent = '×';
+        cardDiv.appendChild(closeBtn);
+
+        // 生成CSS代码字符串
+        let cssCodeString = `${config.text}`;
+        /*let cssCodeString = `${config.id} { width: 100%; height: 100%; aspect-ratio: 1 / 1; background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);`;
+        if (config.special) {
+            cssCodeString += " border: 2px solid #3498db;";
+        }
+        cssCodeString += " }";*/
+
+        // 格式化用于显示的CSS代码
+        let formattedCssCode = `${config.text}`;
+        /*
+        let formattedCssCode = `${config.id} {<br>&nbsp;&nbsp;width: 100%;<br>&nbsp;&nbsp;height: 100%;<br>&nbsp;&nbsp;aspect-ratio: 1 / 1;<br>&nbsp;&nbsp;background-color: white;<br>&nbsp;&nbsp;border-radius: 8px;<br>&nbsp;&nbsp;box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);`;
+        if (config.special) {
+            formattedCssCode += "<br>&nbsp;&nbsp;border: 2px solid #3498db;";
+        }
+        formattedCssCode += "<br>}";*/
+
+        // 创建提示框HTML
+        cardDiv.innerHTML += `
+            <div class="tooltip">
+                <strong>CSS 代码:</strong>
+                <div class="tooltip-code">${formattedCssCode}</div>
+                <button class="copy-btn" data-target="${cssCodeString}">复制代码</button>
+            </div>
+        `;
+
+        console.log(cardDiv);
+
+        container.appendChild(cardDiv);
+    });
+
+    // --- 为所有复制按钮添加事件监听器 ---
+    // 使用事件委托，只需在父容器上绑定一次事件
+    container.addEventListener('click', function(event) {
+        if (event.target.classList.contains('copy-btn')) {
+            const targetCode = event.target.getAttribute('data-target');
+            navigator.clipboard.writeText(targetCode).then(() => {
+                // 提供反馈
+                const originalText = event.target.textContent;
+                event.target.textContent = '已复制!';
+                event.target.classList.add('copied');
+
+                setTimeout(() => {
+                    event.target.textContent = originalText;
+                    event.target.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('无法复制文本: ', err);
+                alert('复制失败，请手动选择文本。');
+            });
+        }
+    });
+
+    // --- 可选：为关闭按钮添加功能 ---
+    // 同样使用事件委托
+    container.addEventListener('click', function(event) {
+        if (event.target.classList.contains('close-btn')) {
+            event.target.closest('.card').remove(); // 直接移除卡片
+        }
+    });
+</script>
+
+</body>
+</html>

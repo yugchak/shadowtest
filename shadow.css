@@ -1,0 +1,282 @@
+#bshadow1 {
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#bshadow2 {
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#bshadow3 {
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+#bshadow4 {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#bshadow5 {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+#bshadow6 {
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#bshadow7 {
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#bshadow8 {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+#bshadow9 {
+	box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+#bshadow10 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+#bshadow11 {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#bshadow12 {
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+#bshadow13 {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+#bshadow14 {
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+#bshadow15 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+#bshadow16 {
+	box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+#bshadow17 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+#bshadow18 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+#bshadow19 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+#bshadow20 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+#bshadow21 {
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+#bshadow22 {
+	box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+#bshadow23 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+#bshadow24 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+#bshadow25 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+#bshadow26 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+#bshadow27 {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+#bshadow28 {
+	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+#bshadow29 {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+#bshadow30 {
+	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+#bshadow31 {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+#bshadow32 {
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#bshadow33 {
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+#bshadow34 {
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+#bshadow35 {
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+#bshadow36 {
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+#bshadow37 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+#bshadow38 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+#bshadow39 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+#bshadow40 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+#bshadow41 {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+#bshadow42 {
+	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+#bshadow43 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+#bshadow44 {
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+#bshadow45 {
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+#bshadow46 {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+#bshadow47 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+#bshadow48 {
+	box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+#bshadow49 {
+	box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+}
+#bshadow50 {
+	box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+}
+#bshadow51 {
+	box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+#bshadow52 {
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+#bshadow53 {
+	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+#bshadow54 {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+#bshadow55 {
+	box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+}
+#bshadow56 {
+	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+#bshadow57 {
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+#bshadow58 {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+#bshadow59 {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+#bshadow60 {
+	box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+#bshadow61 {
+	box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px; border-radius: 0px;
+}
+#bshadow62 {
+	box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px; border-radius: 0px;
+}
+#bshadow63 {
+	box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+#bshadow64 {
+	box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+#bshadow65 {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+#bshadow66 {
+	box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+#bshadow67 {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+#bshadow68 {
+	box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+#bshadow69 {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+#bshadow70 {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+#bshadow71 {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+#bshadow72 {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+#bshadow73 {
+	box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+#bshadow74 {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+#bshadow75 {
+	box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+#bshadow76 {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+#bshadow77 {
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+#bshadow78 {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+#bshadow79 {
+	box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+#bshadow80 {
+	box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}
+#bshadow81 {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+}
+#bshadow82 {
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+#bshadow83 {
+	box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+#bshadow84 {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+}
+#bshadow85 {
+	box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}
+#bshadow86 {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+#bshadow87 {
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+#bshadow88 {
+	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; border-radius: 35px;
+}
+#bshadow89 {
+	box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+#bshadow90 {
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+#bshadow91 {
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+#bshadow92 {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+#bshadow93 {
+	box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+#bshadow94 {
+	box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
